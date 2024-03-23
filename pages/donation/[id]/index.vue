@@ -1,14 +1,26 @@
 <script setup lang="ts">
+import { Order } from "~/types";
+
 
 const route = useRoute()
 
 const postalCode = ref<string>();
 const firstName = ref<string>()
 
+/**
+A.A Luis Ramirez intente hacer esta funcion utilizando el create de strapi pero me añadia 
+un data{} y como en el backend se destructura order_meta me daba error porque no podia 
+leerlo.
+**/
+
 const submitDonationForm = async () => {
     try {
-        const token = useStrapiToken()
 
+        if (!postalCode.value || !firstName.value) {
+            return alert('Por favor, rellene todos los campos obligatorios');
+        }
+
+        const token = useStrapiToken()
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token._value}`
@@ -44,7 +56,7 @@ const submitDonationForm = async () => {
 <template>
     <section>
         <h1 class="text-center">Make a Donation</h1>
-        <article class="col border border-primary h-auto p-5">
+        <article class="col border border-secundary card-donation">
             <form class="card-body" @submit.prevent="submitDonationForm">
                 <div class="d-flex justify-content-between">
                     <h5 class="card-title mb-5">Donate Form</h5>
@@ -71,3 +83,14 @@ const submitDonationForm = async () => {
         </article>
     </section>
 </template>
+
+<style scoped lang="scss">
+.card-donation {
+    padding: 3rem 3rem 5rem 3rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 320px;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.233);
+}
+</style>
