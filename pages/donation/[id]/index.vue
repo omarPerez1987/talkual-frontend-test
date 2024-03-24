@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Order } from "~/types";
-
 
 const route = useRoute()
 
@@ -8,8 +6,8 @@ const postalCode = ref<string>();
 const firstName = ref<string>()
 
 /**
-A.A Luis Ramirez intente hacer esta funcion utilizando el create de strapi pero me añadia 
-un data{} y como en el backend se destructura order_meta me daba error porque no podia 
+A.A Luis Ramirez intente hacer esta funcion utilizando el create de nuxt/strapi pero me añadia 
+un data{} y como en el backend se destructura order_meta me daba error 500 porque no podia 
 leerlo.
 **/
 

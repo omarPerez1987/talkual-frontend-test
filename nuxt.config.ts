@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/strapi'],
-  css: [
-    'bootstrap/dist/css/bootstrap.min.css',
-  ],
-})
+  modules: ["@nuxtjs/strapi", "@pinia/nuxt"],
+  css: ["bootstrap/dist/css/bootstrap.min.css"],
+});
